@@ -1,0 +1,18 @@
+{
+  "name": "chatter",
+  "version": "1",
+  "authors": [
+    "radicalcakes <tbhuynh10@gmail.com>"
+  ],
+  "description": "fgt",
+  "main": "fgt",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
