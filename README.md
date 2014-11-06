@@ -1,7 +1,7 @@
 Chatter
 =========
 
-Chatter is an encrypted chat room server and app.
+Peer-based crypto group chat.
 
  
 Version
@@ -48,6 +48,16 @@ wscat -c ws://127.0.0.1:8888
 wscat -c ws://127.0.0.1:8888
 'chatter join <roomId>'
 ```
+
+TODOS
+=======
+- flesh out ios app and connect
+- encapsulate the client into an object - i find it weird to have a 'chat' method on the room object
+- explore different assymetric keys
+- flesh out flask
+- hook in redis
+- see trello for more todos
+ 
 
 
 
