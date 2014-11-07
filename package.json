@@ -1,0 +1,29 @@
+{
+  "name": "chatter",
+  "version": "0.0.1",
+  "description": "Peer-based crypto group chat.",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thenormalsquid/chatter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thenormalsquid/chatter/issues"
+  },
+  "homepage": "https://github.com/thenormalsquid/chatter",
+  "dependencies": {
+    "express": "^4.10.1",
+    "redis": "^0.12.1",
+    "winston": "^0.8.3",
+    "ws": "^0.4.32"
+  }
+}

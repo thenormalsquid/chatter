@@ -3,7 +3,7 @@ Chatter
 
 Peer-based crypto group chat.
 
- 
+
 Version
 ----
 
@@ -22,8 +22,7 @@ Installation
 
 ```
 git clone git@github.com:thenormalsquid/chatter.git
-npm install hiredis redis
-npm install -g ws
+npm install
 ```
 
 ##### Configure Plugins. Instructions in following config files:
@@ -57,7 +56,7 @@ TODOS
 - flesh out flask
 - hook in redis
 - see trello for more todos
- 
+
 
 
 
