@@ -51,6 +51,8 @@ Server.prototype.handleCreate = function(client, args) {
   var roomId = crypto.randomBytes(10).toString('hex');
   this.rooms[roomId] = [];
   console.log("Created channel " + roomId + ": " + this);
+
+  client.send("Created channel " + roomId);
   // join the room!
   this.handleJoin(client, [roomId]);
 };
