@@ -1,13 +1,13 @@
 var ioc = require("ioc"),
     crypto = require('crypto'),
-    Client = require("./client.js")
-    ;
+    Client = require("./client.js"),
+    logger = require("../logger/logger.js").logger;
 
 
 //TODO This should probably not be in server.js
 function broadcast(clientList, message) {
   var idx;
-  console.log("Sending " + message + " to " + clientList);
+  logger.debug("Sending " + message + " to " + clientList);
   for(idx in clientList) {
     if (clientList[idx] !== undefined) {
       clientList[idx].send(message);
@@ -27,12 +27,11 @@ function Server() {
 Server.prototype.newConnection = function(connection) {
   var client = new Client(connection);
   this.clients[client.id] = [];
-
-  console.log("new client: " + client.id);
+  logger.info("new client: " + client.id);
 };
 
 Server.prototype.handleJoin = function(client, args) {
-  console.log(client.id + " join " + args);
+  logger.info(client.id + " join " + args);
   var room = this.rooms[args[0]];
 
   if (room === undefined) {
@@ -47,10 +46,10 @@ Server.prototype.handleJoin = function(client, args) {
 };
 
 Server.prototype.handleCreate = function(client, args) {
-  console.log(client.id + " create " + args);
+  logger.info(client.id + " create " + args);
   var roomId = crypto.randomBytes(10).toString('hex');
   this.rooms[roomId] = [];
-  console.log("Created channel " + roomId + ": " + this);
+  logger.debug("Created channel " + roomId + ": " + this);
 
   client.send("Created channel " + roomId);
   // join the room!
@@ -58,8 +57,8 @@ Server.prototype.handleCreate = function(client, args) {
 };
 
 Server.prototype.handleSend = function(client, message) {
-  console.log("handle send:" + client.id +" " + message);
-  console.log(this.clients);
+  logger.info("handle send:" + client.id +" " + message);
+  logger.debug(this.clients);
   var roomsClientsIn = this.clients[client.id];
 
   for(c in roomsClientsIn) {

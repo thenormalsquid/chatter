@@ -1,6 +1,8 @@
 var ioc = require('ioc'),
     crypto = require('crypto'),
-    assert = require('assert');
+    assert = require('assert'),
+    logger = require('../logger/logger.js').logger;
+
 /*
  * Client represents an individual connected to the server.
  */
@@ -14,7 +16,7 @@ function Client (ws) {
 }
 
 Client.prototype.handleMessage = function (message) {
-  console.log(this.id +" RECV \"" + message + "\"");
+  logger.info(this.id +" RECV \"" + message + "\"");
   if (message.indexOf("chatter ") === 0) {
     // possibly a chatter command.
 
@@ -31,13 +33,13 @@ Client.prototype.handleMessage = function (message) {
     }
   }
 
-  console.log("before chattersend");
+  logger.debug("before chattersend");
   ioc.resolve("chatter send", this, message);
 
 };
 
 Client.prototype.send = function(message) {
-  console.log(this.id + " SEND \"" + message + "\"");
+  logger.info(this.id + " SEND \"" + message + "\"");
   this.sock.send(message);
 };
 
